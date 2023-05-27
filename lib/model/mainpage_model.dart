@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_proje1/constant.dart';
 import 'package:flutter_proje1/model/notes_model.dart';
-import 'package:flutter_proje1/pages/mainpage.dart';
+import 'package:flutter_proje1/pages/main_page_view.dart';
 import 'package:flutter_proje1/product/locale_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class MainPageModel extends State<MainPage> {
+abstract class MainPageModel extends State<MainPageView> {
   @override
   void initState() {
     super.initState();

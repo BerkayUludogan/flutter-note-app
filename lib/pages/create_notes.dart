@@ -81,8 +81,12 @@ class _CreateNotesState extends State<CreateNotes> {
       heroTag: index,
       onPressed: () {
         colorId = index;
+        setState(() {});
       },
       backgroundColor: color,
+      child: colorId == index
+          ? const Icon(Icons.check, color: Colors.black)
+          : const SizedBox.shrink(),
     );
   }
 
