@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_proje1/constant.dart';
 import 'package:flutter_proje1/model/notes_model.dart';
 import 'package:flutter_proje1/product/locale_manager.dart';
@@ -23,57 +24,74 @@ class _CreateNotesState extends State<CreateNotes> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Not Oluştur'),
+          backgroundColor: Colors.white,
+          iconTheme: const IconThemeData(color: Colors.indigo),
+          elevation: 0,
+          title: Text(
+            'Not Oluştur',
+            style: Constant.headerStyle,
+          ),
         ),
         body: Center(
-          child: Container(
-            height: 500,
-            width: 500,
-            decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-            child: Column(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: textEditingController,
-                    maxLines: null,
-                    keyboardType: TextInputType.multiline,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: const BorderRadius.all(Radius.circular(25))),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: textEditingController,
+                      decoration: const InputDecoration(
+                        hintText: 'Notunuzu Giriniz',
+                      ),
+                      maxLines: null,
+                      keyboardType: TextInputType.multiline,
+                    ),
                   ),
-                ),
-                Constant.defaultHeight,
-                Center(
-                    child:
-                        Text('Renk Seçimi Yapınız', style: Constant.textStyle)),
-                Constant.defaultHeight,
-                Container(
-                  decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15))),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _createColor(Constant.color1, 1),
-                        _createColor(Constant.color2, 2),
-                        _createColor(Constant.color3, 3),
-                        _createColor(Constant.color4, 4),
-                        _createColor(Constant.color5, 5),
-                      ]),
-                ),
-                Constant.defaultHeight,
-                Center(
-                    child: ElevatedButton(
-                  onPressed: () async {
-                    if (textEditingController.text.isEmpty) return;
-                    await saveData();
-                    if (!mounted) return;
-                    Navigator.of(context).pop(isNoteAdded);
-                  },
-                  child: const Text('KAYDET'),
-                ))
-              ],
+                  Constant.defaultHeight,
+                  Center(
+                      child: Text('Renk Seçimi Yapınız',
+                          style: Constant.headerStyle)),
+                  Constant.defaultHeight,
+                  Container(
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          _createColor(Constant.color1, 1),
+                          _createColor(Constant.color2, 2),
+                          _createColor(Constant.color3, 3),
+                          _createColor(Constant.color4, 4),
+                          _createColor(Constant.color5, 5),
+                        ]),
+                  ),
+                  Constant.defaultHeight,
+                  Center(
+                      child: ElevatedButton(
+                    onPressed: () async {
+                      if (textEditingController.text.isEmpty || textEditingController.text.trim().isEmpty) return;
+                      await saveData();
+                      if (!mounted) return;
+                      Navigator.of(context).pop(isNoteAdded);
+                    },
+                    child: Text('KAYDET', style: Constant.buttonStyle),
+                  ))
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  bool isInputValid(String input) {
+    // Girilen metni kontrol eder ve boşluk karakteri girilmediği durumlarda true döner
+    return input.trim() != '';
   }
 
   Widget _createColor(Color color, int index) {
