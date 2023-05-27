@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_proje1/pages/mainpage.dart';
+import 'package:flutter_proje1/pages/main_page_view.dart';
 import 'package:flutter_proje1/product/locale_manager.dart';
 
 Future<void> main() async{
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: MainPage(),
+        body: MainPageView(),
       ),
     );
   }

@@ -7,7 +7,6 @@ class LocaleManager {
 
   LocaleManager._internal();
   SharedPreferences? _preferences;
-  SharedPreferences? preferences;
 
   Future<void> init() async {
     _preferences = await SharedPreferences.getInstance();

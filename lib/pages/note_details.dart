@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_proje1/constant.dart';
 
-
 class NoteDetails extends StatefulWidget {
   final String note;
   const NoteDetails({super.key, required this.note});
@@ -21,6 +20,7 @@ class _NoteDetailsState extends State<NoteDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(Constant.detailTitle),
       ),
