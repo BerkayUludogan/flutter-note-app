@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_proje1/constant.dart';
+import 'package:flutter_proje1/model/notes_model.dart';
+import 'package:flutter_proje1/pages/create_notes.dart';
 
 class NoteDetails extends StatefulWidget {
+  
   final String note;
   const NoteDetails({super.key, required this.note});
 
@@ -14,21 +17,41 @@ class _NoteDetailsState extends State<NoteDetails> {
   @override
   void initState() {
     super.initState();
+
     textEditingController = TextEditingController(text: widget.note);
   }
-
+List<MyNoteModel>? myNoteList;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(Constant.detailTitle),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => CreateNotes(note: textEditingController.text,),
+              ));
+            },
+            icon: const Icon(Icons.edit),
+          )
+        ],
+        title: Text(
+          Constant.detailTitle,
+          style: Constant.headerStyle,
+        ),
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.indigo),
+        backgroundColor: Colors.white,
       ),
       body: Column(
         children: [
-          TextField(
-            maxLines: 20,
-            controller: textEditingController,
+          Expanded(
+            child: TextField(
+              readOnly: true,
+              maxLines: null,
+              controller: textEditingController,
+            ),
           )
         ],
       ),

@@ -3,7 +3,6 @@ import 'package:flutter_proje1/constant.dart';
 import 'package:flutter_proje1/model/notes_model.dart';
 import 'package:flutter_proje1/pages/main_page_view.dart';
 import 'package:flutter_proje1/product/locale_manager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class MainPageModel extends State<MainPageView> {
   @override
@@ -11,11 +10,6 @@ abstract class MainPageModel extends State<MainPageView> {
     super.initState();
     getNotes();
   }
-
-  Future<SharedPreferences> getSharedPreferenceInstance() async {
-    return await SharedPreferences.getInstance();
-  }
-
   List<MyNoteModel>? myNoteList;
   bool isLoading = false;
   Future<void> getNotes() async {

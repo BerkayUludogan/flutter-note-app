@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,8 +9,8 @@ class Constant {
   static final TextStyle headerStyle = GoogleFonts.quicksand(
       fontSize: 30, fontWeight: FontWeight.w900, color: Colors.indigo);
 
-  static final TextStyle buttonStyle = GoogleFonts.quicksand(
-      fontSize: 30, fontWeight: FontWeight.w900);
+  static final TextStyle buttonStyle =
+      GoogleFonts.quicksand(fontSize: 30, fontWeight: FontWeight.w900);
   static TextStyle textStyle =
       const TextStyle(fontWeight: FontWeight.bold, fontSize: 20);
 

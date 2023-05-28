@@ -16,9 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(brightness: Brightness.light),
-      home: const Scaffold(
-        body: MainPageView(),
-      ),
+      home: const Scaffold(body: MainPageView()),
     );
   }
 }

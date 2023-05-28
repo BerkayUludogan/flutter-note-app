@@ -17,17 +17,20 @@ class MainPageView extends StatefulWidget {
 class _MainPageViewState extends MainPageModel {
   @override
   Widget build(BuildContext context) {
-    setState(() {});
     return Scaffold(
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
         floatingActionButton: FloatingActionButton(
           heroTag: 'create_btn',
           backgroundColor: Colors.white,
-          onPressed: () async {
+          onPressed: () {
             Navigator.of(context)
-                .push(MaterialPageRoute(
-                    builder: (context) => const CreateNotes()))
+                .push(
+              MaterialPageRoute(
+                builder: (context) => const CreateNotes(note: '',
+                ),
+              ),
+            )
                 .then(
               (value) {
                 if (value ?? false) {
@@ -66,11 +69,6 @@ class _MainPageViewState extends MainPageModel {
                 style: Constant.headerStyle,
               ),
               centerTitle: true,
-
-              /* background: Image.asset(
-          'assets/images/header_image.jpg', // İstediğiniz bir arka plan görüntüsü ekleyebilirsiniz
-          fit: BoxFit.cover,
-        ), */
             ),
           ),
           SliverList(
@@ -125,10 +123,6 @@ class _MainPageViewState extends MainPageModel {
                       title: Text(
                         limitWordCount(myNoteList![index].note.toString(), 10),
                       ),
-                      trailing: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.edit),
-                      ),
                     ),
                   ),
                 );
@@ -138,7 +132,7 @@ class _MainPageViewState extends MainPageModel {
           ),
         ],
       );
-  Widget get _noNoteCard => const Center(
-        child: Text('Not yok'),
+  Widget get _noNoteCard => Center(
+        child: Text('Not yok', style: Constant.headerStyle),
       );
 }
