@@ -4,7 +4,6 @@ import 'package:flutter_proje1/model/notes_model.dart';
 import 'package:flutter_proje1/pages/create_notes.dart';
 
 class NoteDetails extends StatefulWidget {
-  
   final String note;
   const NoteDetails({super.key, required this.note});
 
@@ -20,7 +19,8 @@ class _NoteDetailsState extends State<NoteDetails> {
 
     textEditingController = TextEditingController(text: widget.note);
   }
-List<MyNoteModel>? myNoteList;
+
+  List<MyNoteModel>? myNoteList;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +30,9 @@ List<MyNoteModel>? myNoteList;
           IconButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => CreateNotes(note: textEditingController.text,),
+                builder: (context) => CreateNotes(
+                  note: textEditingController.text,
+                ),
               ));
             },
             icon: const Icon(Icons.edit),

@@ -27,8 +27,7 @@ class _MainPageViewState extends MainPageModel {
             Navigator.of(context)
                 .push(
               MaterialPageRoute(
-                builder: (context) => const CreateNotes(note: '',
-                ),
+                builder: (context) => const CreateNotes(note: '',),
               ),
             )
                 .then(
